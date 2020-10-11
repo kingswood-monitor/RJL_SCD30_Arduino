@@ -1,35 +1,63 @@
 #include <Arduino.h>
 
-#include <RJL_SCD30_Arduino_Driver.h>
+#include <RJL_SCD30_Arduino.h>
 
-SCD30Driver driver;
+SCD30 airSensor;
+
+uint16_t air_pressure = 900;
+uint16_t temperature_offset = 0.5;
 
 void setup() {
 
     Serial.begin(115200);
-    delay(1000);
-
-    driver.begin(Wire);
-    Wire.begin(SDA, SCL);
-
-    Serial.println("Started");
-
     pinMode(17, OUTPUT);
 
-    Measurement m = driver.readMeasurement();
+    delay(1000);
 
-    Serial.print("CO2: ");
+    airSensor.begin(Wire);
+    // airSensor.setMeasurementInterval(2);
+    Serial.println("Started");
 
-    float co2 = 0;
+    airSensor.activateAutomaticSelfCalibration();
 
-    memcpy(&co2, &m.co2, sizeof(co2));
+    // airSensor.setTemperatureOffset(0);
 
-    Serial.println(co2);
+    // Serial.print("getAutomaticSelfCalibrationStatus: ");
+    // Serial.println(airSensor.getAutomaticSelfCalibrationStatus());
+
+    // Serial.print("getForcedCalibrationValue: ");
+    // Serial.println(airSensor.getForcedCalibrationValue());
+
+    // Serial.print("Activating automatic self calibration...");
+    // bool success = airSensor.activateAutomaticSelfCalibration();
+    // success ? Serial.println("OK") : Serial.println("Fail");
+
+    // Serial.print("getAutomaticSelfCalibrationStatus=");
+    // Serial.println(airSensor.getAutomaticSelfCalibrationStatus());
+
+    // Serial.print("Deactivating...");
+    // success = airSensor.deactivateAutomaticSelfCalibration();
+    // success ? Serial.println("OK") : Serial.println("Fail");
+
+    // Serial.print("getAutomaticSelfCalibrationStatus: ");
+    // Serial.println(airSensor.getAutomaticSelfCalibrationStatus());
 }
 
 void loop() {
+
+    if (airSensor.dataAvailable())
+    {
+        // Serial.print("CO2:");
+        // Serial.println(airSensor.getCO2());
+
+        // Serial.print("Temp: ");
+        // Serial.println(airSensor.getTemperature());
+
+        // Serial.print("Hum:");
+        // Serial.println(airSensor.getHumidity());
+    }
     digitalWrite(17, HIGH);
-    delay(100);
+    delay(1000);
     digitalWrite(17, LOW);
-    delay(100);
+    delay(1000);
 }

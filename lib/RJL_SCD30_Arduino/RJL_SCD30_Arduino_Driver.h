@@ -104,13 +104,14 @@ class SCD30Driver {
      *
      * @return true if ASC was (de)activated
      */
-    bool toggleActivateAutomaticSelfCalibration();
+    bool activateAutomaticSelfCalibration();
+    bool deactivateAutomaticSelfCalibration();
 
     /**
      * 1.4.6 Set Forced Recalibration value (FRC)
      *
      * Forced recalibration (FRC) is used to compensate for sensor drifts when a reference value
-     * of the CO 2 concentration in close proximity to the SCD30 is available. For best results,
+     * of the CO2 concentration in close proximity to the SCD30 is available. For best results,
      * the sensor has to be run in a stable environment in continuous mode at a measurement rate
      * of 2s for at least two minutes before applying the FRC command and sending the reference
      * value. Setting a reference CO 2 concentration by the method described here will always

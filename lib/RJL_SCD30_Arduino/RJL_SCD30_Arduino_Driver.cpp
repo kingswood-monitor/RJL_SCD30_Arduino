@@ -43,8 +43,12 @@ bool SCD30Driver::setMeasurementInterval(uint16_t intervalSeconds) {
 }
 
 // 1.4.6 (De)Activate Automatic Self Calibration (ASC)
-bool SCD30Driver::toggleActivateAutomaticSelfCalibration() {
-    return (sendCommand(COMMAND_AUTOMATIC_SELF_CALIBRATION));
+bool SCD30Driver::activateAutomaticSelfCalibration() {
+    return (sendCommand(COMMAND_AUTOMATIC_SELF_CALIBRATION), 1);
+}
+
+bool SCD30Driver::deactivateAutomaticSelfCalibration() {
+    return (sendCommand(COMMAND_AUTOMATIC_SELF_CALIBRATION), 0);
 }
 
 // 1.4.6 Set Forced Recalibration value (FRC)
