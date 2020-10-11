@@ -121,8 +121,8 @@ void test_read_measurement() {
 }
 
 // 1.4.6 (De)Activate Automatic Self Calibration (ASC)
-void test_toggle_automatic_self_calibration() {
-    TEST_ASSERT_TRUE(driver.toggleActivateAutomaticSelfCalibration());
+void test_activate_automatic_self_calibration() {
+    TEST_ASSERT_TRUE(driver.activateAutomaticSelfCalibration());
 }
 
 // 1.4.6 (De)Activate Automatic Self Calibration (ASC)
@@ -197,7 +197,7 @@ void setup() {
 
     RUN_TEST(test_read_measurement);
 
-    RUN_TEST(test_toggle_automatic_self_calibration);
+    RUN_TEST(test_activate_automatic_self_calibration);
     RUN_TEST(test_get_automatic_self_calibration_status);
 
     RUN_TEST(test_set_forced_recalibration_value);
