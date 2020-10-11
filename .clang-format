@@ -1,0 +1,8 @@
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterFunction: false
+  SplitEmptyFunction: false
+  AfterClass: false
+BasedOnStyle: Microsoft
+SortIncludes: true
