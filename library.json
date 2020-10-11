@@ -1,0 +1,22 @@
+{
+    "name": "RJL SCD30",
+    "version": "0.1.0",
+    "description": "Library for the Sensirion SCD30 CO2 Sensor",
+    "keywords": "sensor, co2, humidity, temperature",
+    "authors": {
+        "name": "Richard Lyon",
+        "email": "richlyon@mac.com",
+        "maintainer": true
+    },
+    "license": "MIT",
+    "frameworks": "Arduino",
+    "platforms": "espressif32",
+    "build": {
+        "flags": [
+            "-I src",
+            "-I src/config",
+            "-I lib",
+            "-I lib/RJL_SCD30_Arduino"
+        ]
+    }
+}
